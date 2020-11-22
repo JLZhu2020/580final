@@ -93,8 +93,8 @@ Information on the algorithm can be found [here](https://en.wikipedia.org/wiki/A
 
 Your program should be able to run in two modes:
 
-1) given a size (S) and a count (N), use a random number generator to drop N random grains onto an empty sandpile that has `S` rows and `S` columns
-2) given a starting sand pile file, load the sandpile from the file.
+1) given a size (`S`) and a count (`N`), use a random number generator to drop `N` random grains onto an empty sandpile that has `S` rows and `S` columns
+2) given a starting sandpile file, load the sandpile from the file.
 
 In both modes you need to stablize the sandpile iteratively, and capture the sandpile after each sweep. This means that each time you complete step `2.A` in the pseudo code, we need to buffer it for visualization. In order to make our code a little simpler, we can use the following *type-aliases*:
 
@@ -123,11 +123,23 @@ All in all, this code says to convert the buffer into a mutable stream, and then
 
 ### Code Organization
 
+You are given initial files to work from, with includes already set up for you. You list of files to modify are:
+
+* main.cpp
+* sandpile.cpp
+* make_sandpile.cpp
+* sandpile.h
+* make_sandpile.h
+
+#### Details
+
 Your code for generating the random sandpile and the code for loading a sandpile from a file should be contained in header and source files respectively named `make_sandpile.h` and `make_sandpile.cpp`. You should have a function to do each task, forward declared in the header file and defined completely in the source file.
 
-Your code for processing a sandpile should be in header and source files respectively named `sandpile.h` and `sandpile.cpp`.
+Your code for processing a single sandpile iterator (1 sweep) should be in header and source files respectively named `sandpile.h` and `sandpile.cpp`.
 
-You can use the following type-aliases for simplifying code.
+The rest of your code should be in a file named `main.cpp`.
+
+You can use the following type-aliases for simplifying code, which are defined for you in `sandpile.h`.
 
 ```cpp
 using Row = std::vector<int>;
@@ -143,23 +155,6 @@ In order to visualize your sandpile, we will make use of `malen-bokeh`, provided
 
 ## Using the Visualizer
 
-The Abelian Sandpile Model is a system that progresses over time. Every iteration of the core algorithm should produce a *frame*. If we string all of the frames together we would get an animation that shows the progression of the system. Given that a frame is a snapshot of the sandpile, it has the type `std::vector<std::vector<int>>`. If we collect these frames in a vector we end up with data type `std::vector<std::vector<std::vector<int>>>` to represent all of the data for the complete animation... this is a lot of data!
+The Abelian Sandpile Model is a system that progresses over time. Every iteration of the core algorithm should produce a *frame*. If we string all of the frames together we would get an animation that shows the progression of the system. Given that a frame is a snapshot of the sandpile, it has the type `Sandpile` (or `std::vector<std::vector<int>>`). If we collect these frames in a vector we end up with data type `Animation` (or `std::vector<std::vector<std::vector<int>>>`) to represent all of the data for the complete animation... this is a lot of data!
 
-The idea is that after each iteration you can push your entire sandpile into another vector. For simplicity, you can do the following in your code:
-
-
-
-Then you can do:
-
-
-And finally at the end of your program you can then do something like this:
-
-```cpp
-animate(animation);
-serialize(animation);
-```
-
-The function `animate` expects your sandpile data to be of the type `Animation` (i.e. `std::vector<std::vector<std::vector<int>>>`). This code will create a graph that includes a slider and a play button so that you can observe how the sandpile changes over time. You can see an [example here](http://crab.rutgers.edu/~nesan/sandpile.html). This is the result of a sandpile that is 50x50 with each cell initialized to 4 (critical everywhere!). It takes nearly 400 iterations to stablize.
-
-Note that the computational complexity of the sandpile increases exponentially with the size of the your sandpile; a grid that is 100x100 will take over 1000 iterations, which results in a large amount of data. This will result in the graph loading very slowly in your browser (if at all!); and so you should not work with any sandpile greater than 100x100.
-
+Note that the computational complexity of the sandpile increases exponentially with the size of the your sandpile; a grid that is 100x100 will take over 1000 iterations, which results in a very large amount of data. This will result in the graph loading very slowly in your browser (if at all!); **and so you should not work with any sandpile greater than 100x100**.
