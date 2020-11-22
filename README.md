@@ -10,7 +10,7 @@ If you are working in a group, you must let me know the group as soon as possibl
 
 #### Core Requirements
 
-* Code is submitted through GitHub
+* Code is submitted through GitHub - you must create your own repository!
 * A written report is required
   * This should be about a page, and should be provided as a file named README.md with your code. Format your README.md nicely using GitHub Markdown!
   * This report should detail the project, challenges encountered, results, and possible improvements.
@@ -51,6 +51,9 @@ Here is psuedocode:
             v)   add 1 to the neighbor west of e  **
 
             ** if there is no neighbor in that direction, do nothing
+
+    B) save the sandpile into our animation buffer
+    C) produce the animation
 ```
 
 For example, if we have a 3x3 grid:
@@ -149,12 +152,9 @@ using Animation = std::vector<Sandpile>;
 
 This allows us to use the names `Row`, `Sandpile`, and `Animation` as nicknames for their respective data types!
 
-### Visualizing
-
-In order to visualize your sandpile, we will make use of `malen-bokeh`, provided under the directory `project/include/run-sci-comp/`. We also have a serializer we can use to save binary records of the entire sandpile.
-
 ## Using the Visualizer
 
-The Abelian Sandpile Model is a system that progresses over time. Every iteration of the core algorithm should produce a *frame*. If we string all of the frames together we would get an animation that shows the progression of the system. Given that a frame is a snapshot of the sandpile, it has the type `Sandpile` (or `std::vector<std::vector<int>>`). If we collect these frames in a vector we end up with data type `Animation` (or `std::vector<std::vector<std::vector<int>>>`) to represent all of the data for the complete animation... this is a lot of data!
+In `ruc-sci-comp/animate.hpp` is a function `animate` that takes in an `Animation` object (i.e. `std::vector<std::vector<std::vector<int>>>`). The `Animation` object is a 3-dimensional data set. The first dimension holds all of the frames of our animation, the second dimension holds all of the rows of each frame, and the third dimension holds the elements of each row. 
+
 
 Note that the computational complexity of the sandpile increases exponentially with the size of the your sandpile; a grid that is 100x100 will take over 1000 iterations, which results in a very large amount of data. This will result in the graph loading very slowly in your browser (if at all!); **and so you should not work with any sandpile greater than 100x100**.

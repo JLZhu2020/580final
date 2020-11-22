@@ -6,13 +6,16 @@
 #include <string>
 #include <vector>
 #include <malen/bokeh.h>
+#include <ruc-sci-comp/serialize.hpp>
 
 
 const char *DISABLE_MALEN = getenv("DISABLE_MALEN");
 
 
-void animate(const std::vector<std::vector<std::vector<int>>> &data)
+void animate(std::vector<std::vector<std::vector<int>>> &data)
 {
+    serialize(data);
+
     std::string flag = DISABLE_MALEN == nullptr ? "ENABLE" : DISABLE_MALEN;
     if (flag.empty())
     {
@@ -24,8 +27,10 @@ void animate(const std::vector<std::vector<std::vector<int>>> &data)
 
     int min = std::numeric_limits<int>::max();
     int max = std::numeric_limits<int>::min();
-    for (const auto &frame : data)
+    for (auto &frame : data)
     {
+        std::reverse(std::begin(frame), std::end(frame));
+
         for (const auto &row : frame)
         {
             auto r = std::minmax_element(begin(row), end(row));
@@ -60,5 +65,5 @@ void animate(const std::vector<std::vector<std::vector<int>>> &data)
     auto slider = mb.slider(im, "Frame", 0, data.size()-1, malen::kwarg("image", data));
     auto layout = mb.layout(figure, slider);
 
-    mb.generate_html(layout, "colors.html");
+    mb.generate_html(layout, "sandpile.html");
 }
