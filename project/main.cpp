@@ -35,12 +35,6 @@ int main(int argc, char **argv)
     Animation an;
     an.push_back(sp);
     int s=sp.size();
-    for(int i=0;i<s;i++){
-        for(int j=0;j<s;j++){
-            cout<<sp[i][j]<<" ";
-        }
-        cout<<" "<<endl;
-    }
     sandpile sdp;
     while(!sdp.ifStable(sp)){
         Sandpile newSandpile;
