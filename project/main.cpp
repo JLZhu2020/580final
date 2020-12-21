@@ -11,27 +11,34 @@ int main(int argc, char **argv)
     make_sandpile maker;
     Sandpile sp;
 
-    if(atoi(argv[1])==1){
-        if(argc!=4){
-            cout<<"invalid parameter!"<<endl;
-            return 0;
-        }else{          
-            sp=maker.generateSandpile(atoi(argv[2]),atoi(argv[3]));
-        }
-    }else if(atoi(argv[1])==2){
-        if(argc!=3){
-            cout<<"invalid parameter!"<<endl;
-            return 0;
-        }else{
-            ifstream file(argv[2]);
-            sp=maker.readASandpile(file);
-            file.close();
-        }
-    }else{
-        cout<<"invalid parameter!"<<endl;
-        return 0;
-    }
+//     if(atoi(argv[1])==1){
+//         if(argc!=4){
+//             cout<<"invalid parameter!"<<endl;
+//             return 0;
+//         }else{          
+//             sp=maker.generateSandpile(atoi(argv[2]),atoi(argv[3]));
+//         }
+//     }else if(atoi(argv[1])==2){
+//         if(argc!=3){
+//             cout<<"invalid parameter!"<<endl;
+//             return 0;
+//         }else{
+//             ifstream file(argv[2]);
+//             sp=maker.readASandpile(file);
+//             file.close();
+//         }
+//     }else{
+//         cout<<"invalid parameter!"<<endl;
+//         return 0;
+//     }
 
+    if(argc==3){
+        sp=maker.generateSandpile(atoi(argv[1]),atoi(argv[2]));
+    }else if(argc==2){
+        ifstream file(argv[1]);
+        sp=maker.readASandpile(file);
+    }else return 0;
+    
     Animation an;
     an.push_back(sp);
     int s=sp.size();
