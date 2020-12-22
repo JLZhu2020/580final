@@ -13,7 +13,7 @@
 There are three parts of this project: the main.cpp to focus the algorithm of the abelian sandpile simulation, the sandpile.cpp to cope with the stable of certain sandpile and the make_sandpile.cpp to deal with the construction of sandpile from certain parameters.
 For the algorithm of the sandpile collapsing, we use two matrices. One to represent the current state of sandpile and one to store the next moment of the sandpile.
 
-## challenges encountered
+## Challenges encountered
 when we start to do the project, the first function we try to complete is generateSandpile. We create the sandpile by Sandpile sp(S); the vscode could compile the file to main.exe, but when we try to use 
 ##### ./main.exe, 
 it outputs a very strange message
@@ -29,4 +29,4 @@ We spent long time on fixing it, finally we knew we could create the sandpile by
 </p>
 
 ## Possible Improvements:
-We try to decrese the confusion about the relation of two consective frame so that we create two matrix to store their information seperately. However, by comparion to the one matrix method, it seems to have more iteration. Therefore, using one matrix to store the change of sandpile will save memory and times. 
+We try to decrese the confusion about the relation of two consective frame so that we create two matrix to store their information seperately. However, by comparion to the one matrix method, it seems to have more iterations. Therefore, using one matrix to store the change of sandpile will save both memory and times.
