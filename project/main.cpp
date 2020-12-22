@@ -52,7 +52,7 @@ int main(int argc, char **argv)
         for(int i=0;i<s;i++){
             for(int j=0;j<s;j++){
                 if(sp[i][j]<4){
-                    newSandpile[i][j]=sp[i][j];
+                    newSandpile[i][j]+=sp[i][j];
                 }else{
                     newSandpile[i][j]+=(sp[i][j]-4);
                     if(i>0)newSandpile[i-1][j]++;
