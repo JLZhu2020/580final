@@ -29,4 +29,4 @@ We spent long time on fixing it, finally we knew we could create the sandpile by
 </p>
 
 ## Possible Improvements:
-We try to decrese the confusion about the relation of two consective frame so that we create two matrix to store their information seperately. However, by comparion to the one matrix method, it seems to have more iterations. Therefore, using one matrix to store the change of sandpile will save both memory and times.
+We try to decrese the confusion about the relation of two consective frames so that we create two matrices to store their information seperately. However, by comparion to the one matrix method, this method seems to have more iterations. Therefore, using one matrix to store the change of sandpile is a possible improvement since it saves both time and memory.
