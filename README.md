@@ -10,7 +10,7 @@
 ##### ./main.exe data/sandpile_100x100_triangles.dat
 
 ## Detail:
-There are three parts of this project: the main.cpp to focus the algorithm of the abelian sandpile simulation, the sandpile.cpp to cope with the stable of certain sandpile and the make_sandpile.cpp to deal with the construction of sandpile from certain parameters.
+There are three parts of this project: the main.cpp to focus the algorithm of the abelian sandpile simulation, the sandpile.cpp to cope with the stable of certain sandpile and the make_sandpile.cpp to deal with the construction of sandpile from certain parameters. \
 For the algorithm of the sandpile collapsing, we use two matrices. One to represent the current state of sandpile and one to store the next moment of the sandpile.
 
 ## Challenges encountered
