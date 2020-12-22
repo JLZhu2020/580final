@@ -23,9 +23,10 @@ We spent long time on fixing it, finally we knew we could create the sandpile by
 ## Results:
 <p align="center">
 	<h3>Initial frame of sandpile_10x10_4.dat</h3>
-	<img src="./img/initial.png" />
+	<img src="./img/Initial.png" />
 	<h3>Final Results</h3>
-	<img src="./img/final.png" />
+	<img src="./img/End.png" />
 </p>
+
 ## Possible Improvements:
 We try to decrese the confusion about the relation of two consective frame so that we create two matrix to store their information seperately. However, by comparion to the one matrix method, it seems to have more iteration. Therefore, using one matrix to store the change of sandpile will save memory and times. 
