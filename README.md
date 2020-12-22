@@ -1,10 +1,10 @@
 # cpp-final-project Jiale Zhu ,Kangan Hu
 ## How to use?
-### after running the command make, you should use command:
+### after running the command make, you could use following two commands:
 ##### ./main.exe S N 
-### for instance
+### where S means the size of sandpile, N means how many sand. This will let program use function generateSandpile to generate a SxS random sandpile,for instance
 ##### ./main.exe 10 150 
-### to let program use function generateSandpile to generate a SxS random sandpile, S means the size of sandpile, N means how many sand.or you use command:
+### or you could command:
 ##### ./main.exe filename
 ### to let program use function readASandpile to read a file and gerenate a sandpile, for instance 
 ##### ./main.exe data/sandpile_100x100_triangles.dat
